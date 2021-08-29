@@ -46,8 +46,12 @@ function Navbar(props){
             <div className="qHeader_logo"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Quora_logo_2015.svg" alt="logo"/></div>
 
             <div className="qHeader_icons">
-                <div className="qHeader_icon"><Home/></div>
-                <div className="qHeader_icon"><FeaturedPlayListOutlined/></div>
+                <NavLink className="nav-link" activeClassName="active" to="/">
+                    <div className="qHeader_icon"><Home/></div>
+                </NavLink>
+                <NavLink className="nav-link" activeClassName="active" to="/material">
+                    <div className="qHeader_icon"><FeaturedPlayListOutlined/></div>
+                </NavLink>
                 <div className="qHeader_icon"><AssignmentIndOutlined/></div>
                 <div className="qHeader_icon"><PeopleAltOutlined/></div>
                 <div className="qHeader_icon"><NotificationImportantOutlined/></div>
@@ -59,7 +63,7 @@ function Navbar(props){
             <div className="qHeader_rem">
             <NavLink className="nav-link" to="/logout">
                 <Avatar className="avatar" src="none" alt={props.username}/>
-                </NavLink>
+            </NavLink>
             </div>
             {/* <Language className="language"/> */}
             <h5>{props.username}</h5>

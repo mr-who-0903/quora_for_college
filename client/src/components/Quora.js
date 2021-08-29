@@ -2,7 +2,9 @@ import React, {useEffect, useState, createContext, useReducer} from 'react'
 import {useHistory} from 'react-router-dom'
 import '../css/Quora.css'
 import Navbar from './Navbar';
+import { Switch, Route } from 'react-router-dom';
 import Feed from './Feed';
+import Material from './Material';
 
 import { initialState, reducer } from '../reducer/useReducer';
 
@@ -49,8 +51,17 @@ function Quora(){
         <>
             <UserContext.Provider value={{state, dispatch}}>
             <Navbar username={userData.username} />
+
             <div className="quora_content">
-              <Feed username={userData.username} />
+                <Switch>
+                    <Route exact path='/'>
+                        <Feed username={userData.username} />
+                    </Route>
+                    <Route exact path='/material'>
+                        <Material/>
+                    </Route>
+
+                </Switch>
             </div>
             </UserContext.Provider>
         </>

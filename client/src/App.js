@@ -9,10 +9,10 @@ import Logout from './components/Logout';
 const Routing = () =>{
   return(
       <Switch>
-          <Route exact path='/' component={Quora} /> 
           <Route exact path='/signin' component={Signin} />
           <Route exact path='/signup' component={Signup} />
           <Route exact path='/logout' component={Logout} />
+          <Route path='/' component={Quora} /> 
       </Switch>
   )
 }
