@@ -81,9 +81,17 @@ function Post(props){
                 </div>
                 <div className="post_body">
                     <div className="post_ques">
-                        <h5>{props.question}</h5>
+                        <div style={{display:"flex", flexDirection:"column"}}>
+                            <h5>{props.question}</h5>
+                            {
+                                (answers.length === 1) ? 
+                                <h6>{answers.length} Answer</h6>
+                                :
+                                <h6>{answers.length} Answers</h6>
+                            }
+                        </div>
                         <button className="post_ansbtn" onClick={() => setOpenModal(true)}>Answer</button>
-
+                        
                         <Modal
                             isOpen = {openModal}
                             onRequestClose = {() => setOpenModal(false)}
@@ -118,12 +126,17 @@ function Post(props){
                                 </div>
                             </Modal>
                     </div>
+
                     <div className="post_ans">
                         {answers.map((ans, index)=>{
-                            return <div className="row" key={index}>
+                            return( <>
+                                    <div className="row" key={index}>
                                         <div className="col-8">{ans.answer}</div>
                                         <div className="col-4 ansDetails"><span className="ansUN">{ans.username}</span>, <span className="ansDate"> {ans.date}</span></div>
                                     </div>
+                                    <hr style={{borderTop:"1px dotted grey", margin:'0.5rem 0'}} />
+                                    </>
+                                    )
                         })}
                     </div>
                     

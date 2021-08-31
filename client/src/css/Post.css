@@ -50,6 +50,7 @@
     padding: 10px;
     border-radius: 30px;
     cursor: pointer;
+    height: 3rem;
 }
 .post_body > .post_ques > .post_ansbtn:hover{
     background-color: rgb(14, 14, 163);
