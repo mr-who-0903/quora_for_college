@@ -14,7 +14,7 @@ require('./db/conn');
 app.use(express.json());  // to recognise the incoming req obj as JSON obj
 
 //  linking the router files to make our route easy
-app.use(require('./router/auth'));
+app.use(require('./router/auth')); // app.use() is a global middleware
 
 const port = process.env.PORT;
 

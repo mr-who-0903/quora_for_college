@@ -74,10 +74,33 @@ const questionSchema = new mongoose.Schema({
 
         }
     ]
-
-
-
 })
+
+const fileSchema = new mongoose.Schema({
+
+      title: {
+        type: String,
+        required: true,
+        trim: true
+      },
+      description: {
+        type: String,
+        required: true,
+        trim: true
+      },
+      file_path: {
+        type: String,
+        required: true
+      },
+      file_mimetype: {
+        type: String,
+        required: true
+      }
+    },
+    {
+      timestamps: true
+    }
+  );
 
 // password hashing     // this is a middleware function
 userSchema.pre('save', async function (next){
@@ -117,5 +140,6 @@ questionSchema.methods.addAnswer = async function(username, email, answer, date)
 // creating collection (collection means table)
 const User = mongoose.model('user', userSchema);    
 const Question = mongoose.model('question', questionSchema);
+const File = mongoose.model('file', fileSchema);
 
-module.exports = {User, Question};
+module.exports = {User, Question, File};
