@@ -1,0 +1,146 @@
+.material-main-div{
+    width: 50%;
+    margin-top: 2rem;
+}
+
+.react-tabs ul{
+    border-bottom: none;
+}
+
+.react-tabs ul li{
+    background: none;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.react-tabs__tab-panel{
+    margin-top: 2rem;
+}
+
+.react-tabs__tab--selected{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid #8f1f1b;
+    color: #8f1f1b;
+}
+
+.download-btn{
+    background: #178af5;
+    color: white;
+    cursor: pointer;
+    padding: 5px 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.download-btn:hover{
+    background: rgb(22, 104, 180);
+}
+
+.errorMsg {
+color: #f21e08;
+background: #fff0f0;
+padding: 1rem;
+}
+
+.form-group{
+    margin-bottom: 15px !important;
+}
+  
+.upload-section {
+display: flex;
+height: 200px;
+margin-bottom: 10px;
+margin-top: 25px;
+}
+
+.drop-zone {
+margin-bottom: 10px;
+padding: 40px 10px;
+height: inherit;
+border: 2px dashed #8f1f1b;;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+}
+.drop-zone:focus {
+outline: none;
+}
+
+.image-preview {
+height: inherit;
+margin-left: 5%;
+}
+
+.preview-image {
+width: 100%;
+height: inherit;
+display: block;
+margin-bottom: 10px;
+}
+
+.preview-message {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-left: 5%;
+}
+
+.files-container {
+width: 98%;
+overflow-x: auto;
+}
+
+.files-table {
+width: 100%;
+border: 1px solid #ccc;
+border-collapse: collapse;
+}
+
+tr, td, th {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+thead{
+    background: #f0d5d4;
+}
+
+tr:hover{
+    background: #f0d5d4;
+}
+
+.file-title {
+    width: 20%;
+}
+
+.file-description {
+    width: 70%;
+}
+
+
+@media screen and (max-width: 1000px) {
+.upload-section {
+    flex-direction: column;
+}
+.image-preview {
+    margin-left: 0;
+    height: 300px;
+}
+.upload-section {
+    height: unset;
+}
+}
+
+@media screen and (max-width: 600px) {
+h1 {
+    font-size: 25px;
+}
+.drop-zone {
+    width: 100%;
+}
+}

@@ -52,9 +52,9 @@ function Navbar(props){
                 <NavLink className="nav-link" activeClassName="active" to="/material">
                     <div className="qHeader_icon"><FeaturedPlayListOutlined/></div>
                 </NavLink>
-                <div className="qHeader_icon"><AssignmentIndOutlined/></div>
+                {/* <div className="qHeader_icon"><AssignmentIndOutlined/></div>
                 <div className="qHeader_icon"><PeopleAltOutlined/></div>
-                <div className="qHeader_icon"><NotificationImportantOutlined/></div>
+                <div className="qHeader_icon"><NotificationImportantOutlined/></div> */}
             </div>
             <div className="qHeader_search">
                 <Search className="search"/>

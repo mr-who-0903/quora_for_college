@@ -19,7 +19,7 @@
 .qHeader_icons{
     display: flex;
     justify-content: space-between;
-    margin-right: 20px;
+    margin-right: 10%;
 }
 
 .qHeader_icons .nav-link{

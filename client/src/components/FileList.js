@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import download from 'downloadjs';
 import axios from 'axios';
-
+import { ButtonGroup } from 'react-bootstrap';
 
 const FilesList = () => {
   const [filesList, setFilesList] = useState([]);
@@ -56,14 +56,12 @@ const FilesList = () => {
                   <td className="file-title">{title}</td>
                   <td className="file-description">{description}</td>
                   <td>
-                    <a
+                    <button
                       href="#/"
-                      onClick={() =>
-                        downloadFile(_id, file_path, file_mimetype)
-                      }
-                    >
+                      className="download-btn"
+                      onClick={() => downloadFile(_id, file_path, file_mimetype)}>
                       Download
-                    </a>
+                    </button>
                   </td>
                 </tr>
               )
