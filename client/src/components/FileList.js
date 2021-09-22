@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import download from 'downloadjs';
 import axios from 'axios';
-import { ButtonGroup } from 'react-bootstrap';
+import { Spinner } from 'react-bootstrap';
+import Loader from 'react-loader-spinner';
 
 const FilesList = () => {
   const [filesList, setFilesList] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getFilesList = async () => {
@@ -13,6 +15,7 @@ const FilesList = () => {
         const { data } = await axios.get(`/getAllFiles`);
         setErrorMsg('');
         setFilesList(data);
+        setLoading(false);
       } catch (error) {
         error.response && setErrorMsg(error.response.data);
       }
@@ -37,6 +40,18 @@ const FilesList = () => {
     }
   };
 
+  const dateFormatter = (date) =>{
+
+    const allDateTime = date;
+    const allDateTimeArr = allDateTime.split('T');
+    const allDate = allDateTimeArr[0].split('-');
+
+    var months = [ "Jan", "Feb", "Mar", "April", "May", "June", 
+       "July", "Aug", "Sept", "Oct", "Nov", "Dec" ];
+
+    return (allDate[2]+" "+months[allDate[1]-1]+", "+allDate[0]);
+  }
+
   return (
     <div className="files-container">
       {errorMsg && <p className="errorMsg">{errorMsg}</p>}
@@ -44,16 +59,19 @@ const FilesList = () => {
         <thead>
           <tr>
             <th>Title</th>
+            <th>Uploaded on</th>
             <th>Description</th>
             <th>Download File</th>
           </tr>
         </thead>
+
         <tbody>
           {filesList.length > 0 ? (
             filesList.map(
-              ({ _id, title, description, file_path, file_mimetype }) => (
+              ({ _id, title, description, file_path, file_mimetype, createdAt }) => (
                 <tr key={_id}>
                   <td className="file-title">{title}</td>
+                  <td>{dateFormatter(createdAt)}</td>
                   <td className="file-description">{description}</td>
                   <td>
                     <button
@@ -66,7 +84,7 @@ const FilesList = () => {
                 </tr>
               )
             )
-          ) : (
+          ) : ( loading ? null :
             <tr>
               <td colSpan={3} style={{ fontWeight: '300' }}>
                 No files found. Please add some.
@@ -75,6 +93,12 @@ const FilesList = () => {
           )}
         </tbody>
       </table>
+      {loading ? 
+      <div style={{textAlign: 'center', marginTop:"2rem" }}>
+            <Loader type="ThreeDots" color="#6b0f0c" height={50} width={50}/>
+      </div>
+      : null
+      }
     </div>
   );
 };
