@@ -107,7 +107,6 @@ router.post('/question', authenticate, async (req, res)=>{
         const ques = new Question({ question: question, username: req.rootUser.username, email: req.rootUser.email });   // store the document in collection
         await ques.save();
         res.status(201).json({ message: "Question posted successfully !" });
-            
     }
     catch(e){ console.log({question_post_err:e}) }
 
@@ -134,6 +133,20 @@ router.post('/answer/:id', authenticate, async (req, res) =>{
     catch(err){
         console.log(err);
     }  
+})
+
+// DELETE POST
+router.get('/delete/:id', async(req, res) =>{
+
+  try{
+
+      await Question.remove({_id: req.params.id});
+      res.status(201).json({ message: "Post deleted." });
+      
+  }
+  catch(err){
+    console.log(err);
+  }
 })
 
 // FOR LOGOUT

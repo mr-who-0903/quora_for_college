@@ -2,7 +2,8 @@ import React, {useState, useRef} from 'react'
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import { Form, Row, Col, Button } from 'react-bootstrap';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Upload = () => {
 
@@ -40,6 +41,7 @@ const Upload = () => {
     const updateBorder = (dragState) => {
         if (dragState === 'over') {
           dropRef.current.style.border = '2px solid #000';
+          dropRef.current.style.background = '#f3dcdc';
         } else if (dragState === 'leave') {
           dropRef.current.style.border = '2px dashed #e9ebeb';
         }
@@ -63,6 +65,13 @@ const Upload = () => {
                   'Content-Type': 'multipart/form-data'
                 }
               });
+
+              setState({title:"", description:""});
+              setPreviewSrc('');
+              toast.success("File uploaded successfully !", 
+                {position: "top-center",
+                autoClose: 5000});
+
             } else {
               setErrorMsg('Please select a file to add.');
             }
@@ -144,6 +153,7 @@ const Upload = () => {
                     </Button>
                 </Form>
             </React.Fragment>
+            <ToastContainer/>
         </div>
     )
 }

@@ -32,7 +32,7 @@ function Navbar(props){
             const data = await res.json();
             if(res.status === 201){
                 console.log("Question submitted successfully");
-                dispatch({type:"USER", payload:true});  // true means user added a question
+                dispatch({type:"USER", payload:true});  // true means refetch questions 
                 setQuesInput("");
             }
         }

@@ -1,8 +1,8 @@
-import { ArrowDownwardOutlined, ArrowUpwardOutlined, ChatBubbleOutlineOutlined, MoreHorizOutlined, RepeatOutlined, ShareOutlined } from '@material-ui/icons'
+import { Delete, ArrowDownwardOutlined, ArrowUpwardOutlined, ChatBubbleOutlineOutlined, MoreHorizOutlined, RepeatOutlined, ShareOutlined } from '@material-ui/icons'
 import React, {useState, useContext} from 'react';
 import { UserContext } from './Quora';
 import '../css/Post.css'
-import {Avatar} from '@material-ui/core';
+import {Avatar, Button, Tooltip} from '@material-ui/core';
 import Modal from 'react-modal';
 
 Modal.setAppElement('#root');
@@ -64,11 +64,31 @@ function Post(props){
             const data = await res.json();
             if(res.status === 201){
                 console.log("Answer submitted successfully");
-                dispatch({type:"USER", payload:true});  // true means user added a ans
+                dispatch({type:"USER", payload:true});  // true means refetch all questions 
                 setAnsInput("");
             }
         }
-        catch(e){console.log(e);}
+        catch(e){console.log(e)}
+    }
+
+    const handleDeletePost = async() =>{
+
+        console.log(props.id);
+        try{
+            const res = await fetch('/delete/'+props.id, {
+                method: "GET",
+                headers:{
+                    "Content-Type" : "application/json"
+                }
+            })
+            await res.json();
+            if(res.status === 201){
+                console.log("deleted");
+                dispatch({type:"USER", payload:true});  // true means refetch all questions 
+            }
+
+        }
+        catch(e){console.log(e)}
     }
 
     return(
@@ -151,8 +171,11 @@ function Post(props){
                     <ChatBubbleOutlineOutlined/>
 
                     <div className="post_footerLeft">
-                    <ShareOutlined/>
-                    <MoreHorizOutlined/>    
+                    <Tooltip title={<h6 style={{margin:'0'}}>Delete post</h6>} arrow>   
+                    <Button onClick={handleDeletePost} style={{outline:'none'}} disabled={(props.username === props.loggedInUser) ? false : true}>    
+                        <Delete />
+                    </Button>
+                    </Tooltip>  
                     </div> 
                 </div>
             </div>

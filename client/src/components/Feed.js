@@ -33,9 +33,13 @@ function Feed(props){
 
     useEffect(() => {
         getQuestions();
-        console.log("hey");
-    }, [state])
+        console.log("inside useEffect");
+    }, [])
     
+    if(state){
+        getQuestions();
+        console.log("inside if")
+    }
 
     return(
         <>
@@ -52,6 +56,8 @@ function Feed(props){
                             id={quesObj._id}
                             username={quesObj.username}
                             answers={quesObj.answers}
+                            loggedInUser={props.username}
+
                          />
                         })
 
