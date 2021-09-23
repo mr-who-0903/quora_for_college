@@ -3,6 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import logo from '../images/signup.svg';
+import slogan from '../images/quora.png'
 
 const Signup = () => {
 
@@ -51,6 +52,9 @@ const Signup = () => {
     return (
         <>
               <div className="container signup">
+                <div className="slogan">
+                    <img src={slogan} alt="logo" />
+                </div>
                   <div className="row content">   
 
                     <div className="col-md-6">	

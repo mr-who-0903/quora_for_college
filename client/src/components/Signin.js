@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {NavLink, useHistory} from 'react-router-dom';
 //import { UserContext } from '../App';
 import '../css/Sign.css'
+import slogan from '../images/quora.png'
 
 const Signin = () => {
 
@@ -50,6 +51,9 @@ const Signin = () => {
     return (
         <>
             <div className="container signin">
+                <div className="slogan">
+                    <img src={slogan} alt="logo" />
+                </div>
                 <div className="row content">
 
                     <div className="col-md-6 mb-3 svg-container">

@@ -5,6 +5,7 @@ import {NavLink} from 'react-router-dom'
 import { Home, Link, AssignmentIndOutlined, FeaturedPlayListOutlined, NotificationImportantOutlined, PeopleAltOutlined, Search, Language, ExpandMore } from '@material-ui/icons';
 import {Avatar, Input} from '@material-ui/core';
 import Modal from 'react-modal';
+import logo from '../images/qc.png'
 
 Modal.setAppElement('#root');
 
@@ -43,7 +44,9 @@ function Navbar(props){
 
     return(
         <div className="qHeader">
-            <div className="qHeader_logo"><img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Quora_logo_2015.svg" alt="logo"/></div>
+            <div className="qHeader_logo">
+                <img src={logo} alt="logo"/>
+            </div>
 
             <div className="qHeader_icons">
                 <NavLink className="nav-link" activeClassName="active" to="/">

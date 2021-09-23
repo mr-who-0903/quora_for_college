@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import download from 'downloadjs';
 import axios from 'axios';
-import { Spinner } from 'react-bootstrap';
 import Loader from 'react-loader-spinner';
 
 const FilesList = () => {

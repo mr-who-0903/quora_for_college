@@ -4,6 +4,7 @@ import { UserContext } from './Quora';
 import '../css/Post.css'
 import {Avatar, Button, Tooltip} from '@material-ui/core';
 import Modal from 'react-modal';
+import DeleteLogo from '../images/trash-alt-solid.svg';
 
 Modal.setAppElement('#root');
 
@@ -173,7 +174,7 @@ function Post(props){
                     <div className="post_footerLeft">
                     <Tooltip title={<h6 style={{margin:'0'}}>Delete post</h6>} arrow>   
                     <Button onClick={handleDeletePost} style={{outline:'none'}} disabled={(props.username === props.loggedInUser) ? false : true}>    
-                        <Delete />
+                        <Delete/>
                     </Button>
                     </Tooltip>  
                     </div> 
